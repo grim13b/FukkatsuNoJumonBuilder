@@ -180,8 +180,7 @@ public class DQ1FukkatsuNoJumonBuilder {
 	}
 	
 	
-	private void setMagicCode()
-	{
+	private void setMagicCode()	{
 		for (int i = 0; i < 14; i ++) {
 			for (int j = 0; j < 8; j ++ ) {
 				if (0 != (data[i] & (0x80 >> j))) {
@@ -191,8 +190,7 @@ public class DQ1FukkatsuNoJumonBuilder {
 		}
 	}
 	
-	private void setCryptCode(int cryptocode)
-	{
+	private void setCryptCode(int cryptocode) {
 		if((cryptocode & 0x01) == 0x01) {
 			data[7] = data[7] | 0x80;
 		}
@@ -206,8 +204,7 @@ public class DQ1FukkatsuNoJumonBuilder {
 		}
 	}
 
-	private void setFlags(DQ1Character character)
-	{
+	private void setFlags(DQ1Character character) {
 		// 竜の鱗装備
 		if(character.hasRyuNoUroko()) {
 			data[1] = data[1] | 0x80;
@@ -234,8 +231,7 @@ public class DQ1FukkatsuNoJumonBuilder {
 		}
 	}
 	
-	private void setItem(DQ1Character character)
-	{
+	private void setItem(DQ1Character character) {
 		int tmpU;
 		int tmpL;
 		
@@ -266,8 +262,7 @@ public class DQ1FukkatsuNoJumonBuilder {
 		
 	}
 	
-	private void setKeyHerb(DQ1Character character)
-	{
+	private void setKeyHerb(DQ1Character character) {
 		int key = character.getMahonokagi();
 		int yakusou = character.getYakusou();
 		
@@ -275,8 +270,7 @@ public class DQ1FukkatsuNoJumonBuilder {
 		data[4] = (key << 4) | yakusou;
 	}
 	
-	private void setEquip(DQ1Character character)
-	{
+	private void setEquip(DQ1Character character) {
 		int w = character.getWeapon();
 		int a = character.getArmor();
 		int s = character.getShield();
@@ -286,8 +280,7 @@ public class DQ1FukkatsuNoJumonBuilder {
 		
 	}
 	
-	private void setGold(int gold)
-	{
+	private void setGold(int gold) {
 		// Goldの上位2バイトを格納
 		data[5] = (gold >> 8) & 0xff;
 		
@@ -296,8 +289,7 @@ public class DQ1FukkatsuNoJumonBuilder {
 	}
 	
 	
-	private void setExp(DQ1Character character)
-	{
+	private void setExp(DQ1Character character) {
 		int exp = character.getExp();
 
 		// 経験値の上位2バイトを格納
@@ -307,8 +299,7 @@ public class DQ1FukkatsuNoJumonBuilder {
 		data[13]= exp & 0xff;
 	}
 	
-	private void setName2Data(DQ1Character character)
-	{
+	private void setName2Data(DQ1Character character) {
 		// 名前分解＆変換
 		String jrName = character.getName();
 		
@@ -316,8 +307,7 @@ public class DQ1FukkatsuNoJumonBuilder {
 
 		// 一文字ずつ切り出す
 		// HashMapから文字コードを引き出す
-		switch(jrName.length())
-		{
+		switch(jrName.length()) {
 		case 4:
 			// 4文字目
 			mojiCode = nameMap.get(jrName.substring(3, 4));

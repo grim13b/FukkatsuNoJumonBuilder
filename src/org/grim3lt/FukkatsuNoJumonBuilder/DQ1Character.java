@@ -33,8 +33,7 @@ public class DQ1Character
 
 	
 	// 道具名変換用のHashMap
-	private HashMap<String, Integer> itemMap = new HashMap<String, Integer>()
-	{
+	private HashMap<String, Integer> itemMap = new HashMap<String, Integer>() {
 		private static final long serialVersionUID = 6L;
 		{
 			put("なし",  0);
@@ -57,8 +56,7 @@ public class DQ1Character
 	};	
 
 	// 濁点変換用のHashMap
-	private HashMap<String, String> DakutenMap = new HashMap<String, String>()
-	{
+	private HashMap<String, String> DakutenMap = new HashMap<String, String>() {
 		private static final long serialVersionUID = 1L;
 		{
 			put("が", "か゛"); put("ぎ", "き゛"); put("ぐ", "く゛"); put("げ", "け゛"); put("ご", "こ゛");
@@ -71,8 +69,7 @@ public class DQ1Character
 
 	
 	// 武器名変換用のHashMap
-	private HashMap<String, Integer> weaponMap = new HashMap<String, Integer>()
-	{
+	private HashMap<String, Integer> weaponMap = new HashMap<String, Integer>() {
 		private static final long serialVersionUID = 3L;
 		{
 			put("なし",  0);
@@ -87,8 +84,7 @@ public class DQ1Character
 	};
 	
 	// 鎧名変換用のHashMap
-	private HashMap<String, Integer> armorMap = new HashMap<String, Integer>()
-	{
+	private HashMap<String, Integer> armorMap = new HashMap<String, Integer>() {
 		private static final long serialVersionUID = 4L;
 		{
 			put("なし",  0);
@@ -103,8 +99,7 @@ public class DQ1Character
 	};
 	
 	// 盾名変換用のHashMap
-	private HashMap<String, Integer> shieldMap = new HashMap<String, Integer>()
-	{
+	private HashMap<String, Integer> shieldMap = new HashMap<String, Integer>() {
 		private static final long serialVersionUID = 5L;
 		{
 			put("なし",  0);
@@ -274,8 +269,7 @@ public class DQ1Character
      * @return どうぐコード
      */
 	public int getItem(int index) {
-		if(items.isEmpty())
-		{
+		if(items.isEmpty()) {
 			throw new NullPointerException();
 		}
 		return items.get(index);
@@ -294,20 +288,16 @@ public class DQ1Character
 	protected void setName(String name) {
 		StringBuilder sb = new StringBuilder();
 
-		for(int i = 0; i < name.length(); i ++)
-		{
+		for(int i = 0; i < name.length(); i ++) {
 			// 名前一文字を分解
 			String ch = name.substring(i, i + 1);
 			String w;
 			
 			// 濁点半濁点の文字の場合はMapから変換
-			if(DakutenMap.containsKey(ch))
-			{
+			if(DakutenMap.containsKey(ch)) {
 				// ゛゜で一文字にカウントする
 				w =DakutenMap.get(ch);
-			}
-			else
-			{
+			} else {
 				// 普通の文字の場合はそのまま
 				w = ch;
 			}
