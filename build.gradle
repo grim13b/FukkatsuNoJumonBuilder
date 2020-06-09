@@ -1,14 +1,32 @@
-apply plugin: 'java'
+plugins {
+	id 'org.springframework.boot' version '2.3.0.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '1.6'
+group = 'org.grim3lt'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '14'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
 }
 
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.+'
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
 }
 
+test {
+	useJUnitPlatform()
+}

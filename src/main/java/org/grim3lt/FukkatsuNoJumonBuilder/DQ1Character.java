@@ -4,6 +4,7 @@ import java.lang.String;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+@Deprecated
 public class DQ1Character
 {
 	private static final int GOLD_LIMIT = 0xffff;

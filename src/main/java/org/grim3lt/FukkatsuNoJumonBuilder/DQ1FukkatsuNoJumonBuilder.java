@@ -1,8 +1,4 @@
-/**
- * DQ1 復活の呪文Factory
- */
 package org.grim3lt.FukkatsuNoJumonBuilder;
-
 
 import java.util.HashMap;
 
@@ -10,6 +6,7 @@ import java.util.HashMap;
  * @author grim3
  *
  */
+@Deprecated
 public class DQ1FukkatsuNoJumonBuilder {
 	// password変換用のHashMap
 	private HashMap<Integer, String> jumonMap = new HashMap<Integer, String>() {
