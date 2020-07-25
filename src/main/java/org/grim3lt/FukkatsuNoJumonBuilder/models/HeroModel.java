@@ -49,10 +49,21 @@ public class HeroModel {
     @Builder.Default
     private final Shield shield = Shield.NOTHING;
 
-    private final boolean isEquippedDragonScale;
-    private final boolean isEquippedSolderRing;
-    private final boolean isEquippedCursedBelt;
-    private final boolean hasDeathNecklace;
-    private final boolean beatDragon;
-    private final boolean beatGolem;
+    @Builder.Default
+    private final boolean isEquippedDragonScale = false;
+
+    @Builder.Default
+    private final boolean isEquippedSolderRing = false;
+
+    @Builder.Default
+    private final boolean isEquippedCursedBelt = false;
+
+    @Builder.Default
+    private final boolean hasDeathNecklace = false;
+
+    @Builder.Default
+    private final boolean beatDragon = false;
+
+    @Builder.Default
+    private final boolean beatGolem = false;
 }

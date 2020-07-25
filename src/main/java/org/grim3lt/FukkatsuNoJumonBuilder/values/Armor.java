@@ -8,10 +8,10 @@ import lombok.Getter;
 public enum Armor implements IntegerCodeEnum {
     NOTHING (0, "なし"),
     CLOTHES (1, "ぬののふく"),
-    LEATHER_CLOTHES (3, "かわのふく"),
-    CHAIN_MAIL (4, "くさりかたびら"),
-    IRON_ARMOR (5, "てつのよろい"),
-    FULL_PLATE (6, "はがねのよろい"),
+    LEATHER_CLOTHES (2, "かわのふく"),
+    CHAIN_MAIL (3, "くさりかたびら"),
+    IRON_ARMOR (4, "てつのよろい"),
+    FULL_PLATE (5, "はがねのよろい"),
     MAGICAL_ARMOR (6, "まほうのよろい"),
     ARMOR_OF_ROTO (7, "ロトのよろい");
 
@@ -21,5 +21,10 @@ public enum Armor implements IntegerCodeEnum {
     @Override
     public String toString() {
         return displayName;
+    }
+
+    @Override
+    public Integer code() {
+        return code;
     }
 }
