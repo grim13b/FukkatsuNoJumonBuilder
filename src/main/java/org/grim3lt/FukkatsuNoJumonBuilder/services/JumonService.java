@@ -36,7 +36,7 @@ public class JumonService {
         this.setEquippedItems(heroModel.isEquippedDragonScale(), heroModel.isEquippedSolderRing());
         this.setBeatBossMonster(heroModel.beatDragon(), heroModel.beatGolem());
 
-        // TODO: 呪い系装備ってどうなっていたんだっけ？
+        // 死の首飾りを入手したかどうか
         this.setCursedItemFlags(heroModel.hasDeathNecklace());
 
         // チェックコード（0-7）の設定
@@ -155,7 +155,7 @@ public class JumonService {
     }
 
     // マジックコードの埋め込み
-    private void setMagicNumber()	{
+    private void setMagicNumber() {
         for (int i = 0; i < 14; i ++) {
             for (int j = 0; j < 8; j ++ ) {
                 if (0 != (data[i] & (0x80 >> j))) {
@@ -178,14 +178,13 @@ public class JumonService {
             encodedCodes[j++] = (tmp >> 18) & 0x003f;
         }
 
-        // TODO: なんとなくworkの使い方が怪しい
-        // ひらがなの対比表に変換する。
         int work = 0;
         for(int i = 0; i < encodedCodes.length; i ++) {
             work = (encodedCodes[i] + work + 4) & 0x3f;
             encodedCodes[i] = work;
         }
 
+        // ひらがなの対比表に変換する。
         StringBuilder stringBuffer = new StringBuilder();
         for(int encodedCode : encodedCodes) {
             stringBuffer.append(jumonMap.get(encodedCode));
