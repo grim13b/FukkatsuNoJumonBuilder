@@ -28,8 +28,4 @@ public enum Item implements IntegerCodeEnum {
     private final Integer code;
     private final String displayName;
 
-    @Override
-    public String toString() {
-        return displayName;
-    }
 }

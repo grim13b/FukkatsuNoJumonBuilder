@@ -140,7 +140,7 @@ public class JumonService {
 
     // ふっかつのじゅもんにランダム性をもたせるコード
     private void setCryptoCode(CryptoCode cryptoCode) {
-        int code = cryptoCode.getValue();
+        int code = cryptoCode.value();
         if((code & 0x01) == 0x01) {
             data[7] = data[7] | 0x80;
         }

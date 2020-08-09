@@ -1,13 +1,13 @@
 package org.grim3lt.FukkatsuNoJumonBuilder.values;
 
-import lombok.Getter;
+import lombok.Value;
 import lombok.experimental.Accessors;
 
-@Getter
+@Value
 @Accessors(fluent = true)
 public class Experience {
+    int value;
     public Experience(int value) {
         this.value = Math.min(value, 65535);
     }
-    private final int value;
 }

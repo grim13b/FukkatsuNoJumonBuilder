@@ -1,23 +1,26 @@
 package org.grim3lt.FukkatsuNoJumonBuilder.values;
 
-import lombok.ToString;
+import lombok.Value;
+import lombok.experimental.Accessors;
 
 import java.util.HashMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@ToString
+@Value
+@Accessors(fluent = true)
 public class Name {
-    private final String value;
+    String value;
 
     public Name(String value) {
-        this.value = Stream.of(value.split(""))
+        var tempName = Stream.of(value.split(""))
                 .map (c -> DakutenMap.getOrDefault(c, c))
-                .collect(Collectors.joining())
-                .substring(0, Math.min(value.length(), 4));
+                .collect(Collectors.joining());
+
+        this.value = tempName.substring(0, Math.min(tempName.length(), 4));
     }
 
-    private final HashMap<String, String> DakutenMap = new HashMap<>() {
+    private final static HashMap<String, String> DakutenMap = new HashMap<>() {
         {
             put("が", "か゛");
             put("ぎ", "き゛");

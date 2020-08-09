@@ -1,8 +1,6 @@
 package org.grim3lt.FukkatsuNoJumonBuilder.models;
 
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.Accessors;
@@ -11,7 +9,6 @@ import org.grim3lt.FukkatsuNoJumonBuilder.values.*;
 @Builder
 @Getter
 @Accessors(fluent = true)
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class HeroModel {
     @Builder.Default
     private final Name name = new Name("ななし");

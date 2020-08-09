@@ -2,9 +2,11 @@ package org.grim3lt.FukkatsuNoJumonBuilder.values;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.experimental.Accessors;
 
 @AllArgsConstructor
 @Getter
+@Accessors(fluent = true)
 public enum Armor implements IntegerCodeEnum {
     NOTHING (0, "なし"),
     CLOTHES (1, "ぬののふく"),
@@ -17,14 +19,4 @@ public enum Armor implements IntegerCodeEnum {
 
     private final Integer code;
     private final String displayName;
-
-    @Override
-    public String toString() {
-        return displayName;
-    }
-
-    @Override
-    public Integer code() {
-        return code;
-    }
 }
