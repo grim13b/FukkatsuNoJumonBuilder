@@ -1,8 +1,6 @@
 package org.grim3lt.FukkatsuNoJumonBuilder.controllers;
 
-import lombok.AllArgsConstructor;
 import org.grim3lt.FukkatsuNoJumonBuilder.libs.FukkatsuNoJumon;
-import org.grim3lt.FukkatsuNoJumonBuilder.libs.JumonUtil;
 import org.grim3lt.FukkatsuNoJumonBuilder.models.HeroInput;
 import org.grim3lt.FukkatsuNoJumonBuilder.models.HeroParameterInput;
 import org.grim3lt.FukkatsuNoJumonBuilder.models.JumonOutput;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@AllArgsConstructor
 @RequestMapping("/")
 public class JumonController {
     @PostMapping("hero")

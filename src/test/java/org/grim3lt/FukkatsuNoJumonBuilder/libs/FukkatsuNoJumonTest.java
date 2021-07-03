@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-//@SpringBootTest
-//@RunWith(SpringRunner.class)
 class FukkatsuNoJumonTest {
     @Test
     void encode() {
