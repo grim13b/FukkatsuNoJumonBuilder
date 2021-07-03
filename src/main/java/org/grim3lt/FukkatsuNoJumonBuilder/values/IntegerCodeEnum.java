@@ -12,7 +12,7 @@ public interface IntegerCodeEnum <E extends Enum<E>> {
     static <E extends Enum<E>> List<ItemCode> toList(Class<? extends IntegerCodeEnum<E>> clazz) {
         return Arrays.stream(clazz.getEnumConstants())
                 .sorted(Comparator.comparing(IntegerCodeEnum::getCode))
-                .map(ice -> new ItemCode(ice.getName(), ice.getCode()))
+                .map(ice -> new ItemCode(ice.toString(), ice.getName()))
                 .collect(Collectors.toList());
     }
 }

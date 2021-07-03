@@ -1,18 +1,21 @@
 {
   "name": {
-    "value": "ななし"
+    "value": "いねほあ"
   },
-  "weapon": "NOTHING",
-  "armor": "NOTHING",
-  "shield": "NOTHING",
+  "weapon": "COPPER_SWORD",
+  "armor": "FULL_PLATE",
+  "shield": "IRON_SHIELD",
   "experience": {
-    "value": 0
+    "value": 52310
   },
   "gold": {
-    "value": 0
+    "value": 99999
   },
   "herb": {
-    "value": 0
+    "value": 9
+  },
+  "magicKey": {
+    "value": 2
   },
   "items": [
     "NOTHING",
@@ -24,9 +27,6 @@
     "NOTHING",
     "NOTHING"
   ],
-  "magicKey": {
-    "value": 0
-  },
   "beat_dragon": false,
   "beat_golem": false,
   "equipped_cursed_belt": false,

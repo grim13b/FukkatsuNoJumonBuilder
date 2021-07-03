@@ -1,110 +1,53 @@
-package org.grim3lt.FukkatsuNoJumonBuilder.services;
+package org.grim3lt.FukkatsuNoJumonBuilder.libs;
 
-import lombok.Builder;
+import org.grim3lt.FukkatsuNoJumonBuilder.models.HeroParameterInput;
 import org.grim3lt.FukkatsuNoJumonBuilder.values.*;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
-@Builder
 public class FukkatsuNoJumon {
     private final int[] data = new int[15];
 
-    @Builder.Default
-    private final Name name = new Name("ななし");
-
-    @Builder.Default
-    private final Experience experience = new Experience(0);
-
-    @Builder.Default
-    private final Gold gold = new Gold(0);
-
-    @Builder.Default
-    private final MagicKey magicKey = new MagicKey(0);
-
-    @Builder.Default
-    private final Herb herb = new Herb(0);
-
-    @Builder.Default
-    private final Item[] items = {
-            Item.NOTHING,
-            Item.NOTHING,
-            Item.NOTHING,
-            Item.NOTHING,
-            Item.NOTHING,
-            Item.NOTHING,
-            Item.NOTHING,
-            Item.NOTHING
-    };
-
-    @Builder.Default
-    private final Weapon weapon = Weapon.NOTHING;
-
-    @Builder.Default
-    private final Armor armor = Armor.NOTHING;
-
-    @Builder.Default
-    private final Shield shield = Shield.NOTHING;
-
-    @Builder.Default
-    private final boolean isEquippedDragonScale = false;
-
-    @Builder.Default
-    private final boolean isEquippedSolderRing = false;
-
-    @Builder.Default
-    private final boolean isEquippedCursedBelt = false;
-
-    @Builder.Default
-    private final boolean hasDeathNecklace = false;
-
-    @Builder.Default
-    private final boolean beatDragon = false;
-
-    @Builder.Default
-    private final boolean beatGolem = false;
-
-    @Builder.Default
-    private final CryptoCode cryptoCode = new CryptoCode(0);
-
-    public String encrypt() {
+    public String encode(HeroParameterInput input) {
         // 変換前データを作る
         // 名前の変換
-        this.encodeName();
+        this.encodeName(input.getName());
 
         // 経験値の変換
-        this.encodeExperience();
+        this.encodeExperience(input.getExperience());
 
         // 所持金の変換
-        this.encodeGold();
+        this.encodeGold(input.getGold());
 
         // 武器 盾 鎧三点セットの変換
-        this.encodeEquipment();
+        this.encodeEquipment(input.getWeapon(), input.getArmor(), input.getShield());
 
         // 鍵 薬草の変換
-        this.encodeKeyAndHerb();
+        this.encodeKeyAndHerb(input.getMagicKey(), input.getHerb());
 
         // アイテムx8の変換
-        this.encodeItems();
+        this.encodeItems(input.getItems());
 
         // 各種フラグの設定
-        this.encodeEquippedItems();
-        this.encodeBeatBossMonster();
+        this.encodeEquippedItems(input.isEquipped_dragon_scale(), input.isEquipped_solder_ring());
+        this.encodeBeatBossMonster(input.isBeat_golem(), input.isBeat_dragon());
 
         // 死の首飾りを入手したかどうか
-        this.encodeCursedItemFlags();
+        this.encodeCursedItemFlags(input.isEquipped_death_necklace());
 
         // チェックコード（0-7）の設定
         this.encodeCryptoCode();
 
-        // マジックコートを計算
+        // マジックナンバーの埋め込み
         this.computeMagicNumber();
 
-        // 変換後データを作る
-        return this.createJumon();
+        // バイトデータをひらがなに変換する
+        return this.encrypt();
     }
 
     // 名前の分解
-    private void encodeName() {
+    private void encodeName(Name name) {
         String nameString = name.value();
 
         // 一文字ずつ切り出す
@@ -122,7 +65,7 @@ public class FukkatsuNoJumon {
     }
 
     // 経験値の展開
-    private void encodeExperience() {
+    private void encodeExperience(Experience experience) {
         // 経験値の上位バイトを格納
         data[2] = (experience.value() >> 8) & 0xff;
 
@@ -131,7 +74,7 @@ public class FukkatsuNoJumon {
     }
 
     // 所持金の展開
-    private void encodeGold() {
+    private void encodeGold(Gold gold) {
         // Goldの上位バイトを格納
         data[5] = (gold.value() >> 8) & 0xff;
 
@@ -140,18 +83,18 @@ public class FukkatsuNoJumon {
     }
 
     // 装備の展開
-    private void encodeEquipment() {
+    private void encodeEquipment(Weapon weapon, Armor armor, Shield shield) {
         // 武器上位3ビット　鎧2-5ビット　盾下位2ビット
         data[6] = weapon.getCode() << 5 | armor.getCode() << 2 | shield.getCode();
     }
 
     // 薬草と魔法の鍵の展開
-    private void encodeKeyAndHerb() {
+    private void encodeKeyAndHerb(MagicKey magicKey, Herb herb) {
         data[4] = (magicKey.value() << 4) | herb.value();
     }
 
     // どうぐの展開
-    private void encodeItems() {
+    private void encodeItems(Item[] items) {
         // インベントリ1-2が0バイト目、3-4が11バイト目、 5-6が3バイト目、 7-8が8バイト目
         data[0] = (items[1].getCode() << 4) | items[0].getCode();
         data[11]= (items[3].getCode() << 4) | items[2].getCode();
@@ -160,7 +103,7 @@ public class FukkatsuNoJumon {
     }
 
     // どうぐ系装備品の展開
-    private void encodeEquippedItems() {
+    private void encodeEquippedItems(boolean isEquippedDragonScale, boolean isEquippedSolderRing) {
         // 竜の鱗装備
         if(isEquippedDragonScale) {
             data[1] = data[1] | 0x80;
@@ -172,7 +115,7 @@ public class FukkatsuNoJumon {
     }
 
     // ボスモンスター討伐フラグの展開
-    private void encodeBeatBossMonster() {
+    private void encodeBeatBossMonster(boolean beatGolem, boolean beatDragon) {
         // 見張りドラゴン退治
         if(beatDragon) {
             data[7] = data[7] | 0x40;
@@ -185,7 +128,7 @@ public class FukkatsuNoJumon {
     }
 
     // のろいのどうぐ装備系フラグ類の展開
-    private void encodeCursedItemFlags() {
+    private void encodeCursedItemFlags(boolean hasDeathNecklace) {
         // 死の首飾り入手
         if(hasDeathNecklace) {
             data[12] = data[12] | 0x40;
@@ -194,7 +137,8 @@ public class FukkatsuNoJumon {
 
     // ふっかつのじゅもんにランダム性をもたせるコード
     private void encodeCryptoCode() {
-        int code = cryptoCode.value();
+        int code = LocalDateTime.now().getNano() % 7;
+
         if((code & 0x01) == 0x01) {
             data[7] = data[7] | 0x80;
         }
@@ -220,14 +164,13 @@ public class FukkatsuNoJumon {
     }
 
     // 15バイトのdataを6bitで分割して20文字分のデータにする
-    private String createJumon() {
+    private String encrypt() {
         final int[] encodedCodes = new int[20];
 
         // 8bitを3つ並べて24bitにしてから6bitコードに分割する。
         int j = 0;
         for(int i = 14; i >= 0; i -= 3) {
             int tmp = data[i - 2] << 16 | data[i - 1] << 8 | data[i];
-
             encodedCodes[j++] =  tmp        & 0x003f;
             encodedCodes[j++] = (tmp >> 6 ) & 0x003f;
             encodedCodes[j++] = (tmp >> 12) & 0x003f;
@@ -245,7 +188,17 @@ public class FukkatsuNoJumon {
         for(int encodedCode : encodedCodes) {
             stringBuffer.append(jumonMap.get(encodedCode));
         }
-        return stringBuffer.toString();
+        return beautify(stringBuffer.toString());
+    }
+
+    private String beautify(String jumon) {
+        return jumon.substring(0, 5) +
+                " " +
+                jumon.substring(5, 12) +
+                " " +
+                jumon.substring(12, 17) +
+                " " +
+                jumon.substring(17);
     }
 
     // password変換用のHashMap

@@ -8,7 +8,7 @@ import org.grim3lt.FukkatsuNoJumonBuilder.values.*;
 
 @Builder
 @Getter
-public class HeroModel {
+public class HeroParameterInput {
     @Builder.Default
     private final Name name = new Name("ななし");
 
