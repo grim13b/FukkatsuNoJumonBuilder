@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
+@Getter
 public enum Armor implements IntegerCodeEnum<Armor> {
     NOTHING (0, "なし"),
     CLOTHES (1, "ぬののふく"),
@@ -16,14 +17,4 @@ public enum Armor implements IntegerCodeEnum<Armor> {
 
     private final Integer code;
     private final String name;
-
-    @Override
-    public Integer getCode() {
-        return code;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
 }

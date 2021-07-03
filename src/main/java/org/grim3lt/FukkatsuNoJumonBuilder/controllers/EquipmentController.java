@@ -1,6 +1,5 @@
 package org.grim3lt.FukkatsuNoJumonBuilder.controllers;
 
-import org.grim3lt.FukkatsuNoJumonBuilder.models.KeyValueResponseModel;
 import org.grim3lt.FukkatsuNoJumonBuilder.values.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,22 +12,22 @@ import java.util.List;
 public class EquipmentController {
 
     @GetMapping("weapons")
-    public List<KeyValueResponseModel> getWeapons() {
+    public List<ItemCode> getWeapons() {
         return IntegerCodeEnum.toList(Weapon.class);
     }
 
     @GetMapping("armors")
-    public List<KeyValueResponseModel> getArmors() {
+    public List<ItemCode> getArmors() {
         return IntegerCodeEnum.toList(Armor.class);
     }
 
     @GetMapping("shields")
-    public List<KeyValueResponseModel> getShields() {
+    public List<ItemCode> getShields() {
         return IntegerCodeEnum.toList(Shield.class);
     }
 
     @GetMapping("items")
-    public List<KeyValueResponseModel> getItems() {
+    public List<ItemCode> getItems() {
         return IntegerCodeEnum.toList(Item.class);
     }
 }

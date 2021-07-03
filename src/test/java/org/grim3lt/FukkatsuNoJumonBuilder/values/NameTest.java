@@ -12,19 +12,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class NameTest {
     @Test
     void testLength() {
-        assertThat(new Name("あいう").getValue())
+        assertThat(new Name("あいう").value())
                 .hasSize(3)
                 .isEqualTo("あいう");
 
-        assertThat(new Name("がらい").getValue())
+        assertThat(new Name("がらい").value())
                 .hasSize(4)
                 .isEqualTo("か゛らい");
 
-        assertThat(new Name("がざじ").getValue())
+        assertThat(new Name("がざじ").value())
                 .hasSize(4)
                 .isEqualTo("か゛さ゛");
 
-        assertThat(new Name("あいうえお").getValue())
+        assertThat(new Name("あいうえお").value())
                 .hasSize(4)
                 .isEqualTo("あいうえ");
     }

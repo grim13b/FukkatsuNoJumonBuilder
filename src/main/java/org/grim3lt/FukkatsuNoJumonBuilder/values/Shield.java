@@ -14,15 +14,5 @@ public enum Shield implements IntegerCodeEnum<Shield> {
 
     private final Integer code;
     private final String name;
-
-    @Override
-    public Integer getCode() {
-        return code;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
 }
 

@@ -105,7 +105,7 @@ public class FukkatsuNoJumon {
 
     // 名前の分解
     private void encodeName() {
-        String nameString = name.getValue();
+        String nameString = name.value();
 
         // 一文字ずつ切り出す
         // HashMapから文字コードを引き出す
@@ -124,19 +124,19 @@ public class FukkatsuNoJumon {
     // 経験値の展開
     private void encodeExperience() {
         // 経験値の上位バイトを格納
-        data[2] = (experience.getValue() >> 8) & 0xff;
+        data[2] = (experience.value() >> 8) & 0xff;
 
         // 経験値の下位バイトを格納
-        data[13]= experience.getValue() & 0xff;
+        data[13]= experience.value() & 0xff;
     }
 
     // 所持金の展開
     private void encodeGold() {
         // Goldの上位バイトを格納
-        data[5] = (gold.getValue() >> 8) & 0xff;
+        data[5] = (gold.value() >> 8) & 0xff;
 
         // Goldの下位バイトを格納
-        data[10] = gold.getValue() & 0xff;
+        data[10] = gold.value() & 0xff;
     }
 
     // 装備の展開
@@ -147,7 +147,7 @@ public class FukkatsuNoJumon {
 
     // 薬草と魔法の鍵の展開
     private void encodeKeyAndHerb() {
-        data[4] = (magicKey.getValue() << 4) | herb.getValue();
+        data[4] = (magicKey.value() << 4) | herb.value();
     }
 
     // どうぐの展開

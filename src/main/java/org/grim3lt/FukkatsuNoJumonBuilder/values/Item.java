@@ -2,7 +2,6 @@ package org.grim3lt.FukkatsuNoJumonBuilder.values;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.experimental.Accessors;
 
 @AllArgsConstructor
 @Getter
@@ -26,14 +25,4 @@ public enum Item implements IntegerCodeEnum<Item> {
 
     private final Integer code;
     private final String name;
-
-    @Override
-    public Integer getCode() {
-        return code;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
 }

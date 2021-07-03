@@ -1,18 +1,13 @@
 package org.grim3lt.FukkatsuNoJumonBuilder.values;
 
-import lombok.Value;
-
 import java.util.HashMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Value
-public class Name {
-    String value;
-
+public record Name(String value) {
     public Name(String value) {
         var tempName = Stream.of(value.split(""))
-                .map (c -> DakutenMap.getOrDefault(c, c))
+                .map(c -> DakutenMap.getOrDefault(c, c))
                 .collect(Collectors.joining());
 
         this.value = tempName.substring(0, Math.min(tempName.length(), 4));
