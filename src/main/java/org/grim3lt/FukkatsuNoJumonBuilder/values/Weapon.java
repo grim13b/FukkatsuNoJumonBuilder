@@ -1,13 +1,9 @@
 package org.grim3lt.FukkatsuNoJumonBuilder.values;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.experimental.Accessors;
 
 @AllArgsConstructor
-@Getter
-@Accessors(fluent = true)
-public enum Weapon implements IntegerCodeEnum {
+public enum Weapon implements IntegerCodeEnum<Weapon> {
     NOTHING (0, "なし"),
     BAMBOO_LANCE (1, "たけざお"),
     CLUB (2, "こんぼう"),
@@ -18,10 +14,15 @@ public enum Weapon implements IntegerCodeEnum {
     SWORD_OF_ROTO (7, "ロトのつるぎ");
 
     private final Integer code;
-    private final String displayName;
+    private final String name;
 
     @Override
-    public String toString() {
-        return displayName;
+    public Integer getCode() {
+        return code;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

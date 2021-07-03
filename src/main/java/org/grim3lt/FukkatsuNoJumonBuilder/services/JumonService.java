@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 public class JumonService {
 
     public String encrypt(HeroModel heroModel) {
+        // TODO: 実装
         return FukkatsuNoJumon.builder()
                 .build()
                 .encrypt();

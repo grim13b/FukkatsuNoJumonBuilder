@@ -6,8 +6,7 @@ import lombok.experimental.Accessors;
 
 @AllArgsConstructor
 @Getter
-@Accessors(fluent = true)
-public enum Item implements IntegerCodeEnum {
+public enum Item implements IntegerCodeEnum<Item> {
     NOTHING (0, "なし"),
     TOUCH (1, "たいまつ"),
     HOLY_WATER (2, "せいすい"),
@@ -19,13 +18,22 @@ public enum Item implements IntegerCodeEnum {
     PRINCESS_LOVE (8, "おうじょのあい"),
     CURSE_BELT (9, "のろいのベルト"),
     SILVER_HARP (10, "ぎんのたてごと"),
-    DEATH_NECKLACE (11, "のろいのベルト"),
+    DEATH_NECKLACE (11, "しのくびかざり"),
     STONE_OF_SUNLIGHT (12, "たいようのいし"),
     STUFF_OF_THE_RAIN (13, "あまぐものつえ"),
     RAINBOW_DROP (14, "にじのしずく"),
     UNKNOWN (15, "（不明）");
 
     private final Integer code;
-    private final String displayName;
+    private final String name;
 
+    @Override
+    public Integer getCode() {
+        return code;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
 }

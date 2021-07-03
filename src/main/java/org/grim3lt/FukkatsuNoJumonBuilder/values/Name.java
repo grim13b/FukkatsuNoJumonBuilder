@@ -1,14 +1,12 @@
 package org.grim3lt.FukkatsuNoJumonBuilder.values;
 
 import lombok.Value;
-import lombok.experimental.Accessors;
 
 import java.util.HashMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Value
-@Accessors(fluent = true)
 public class Name {
     String value;
 

@@ -8,7 +8,6 @@ import org.grim3lt.FukkatsuNoJumonBuilder.values.*;
 
 @Builder
 @Getter
-@Accessors(fluent = true)
 public class HeroModel {
     @Builder.Default
     private final Name name = new Name("ななし");
@@ -47,20 +46,20 @@ public class HeroModel {
     private final Shield shield = Shield.NOTHING;
 
     @Builder.Default
-    private final boolean isEquippedDragonScale = false;
+    private final boolean equipped_dragon_scale = false;
 
     @Builder.Default
-    private final boolean isEquippedSolderRing = false;
+    private final boolean equipped_solder_ring = false;
 
     @Builder.Default
-    private final boolean isEquippedCursedBelt = false;
+    private final boolean equipped_cursed_belt = false;
 
     @Builder.Default
-    private final boolean hasDeathNecklace = false;
+    private final boolean equipped_death_necklace = false;
 
     @Builder.Default
-    private final boolean beatDragon = false;
+    private final boolean beat_dragon = false;
 
     @Builder.Default
-    private final boolean beatGolem = false;
+    private final boolean beat_golem = false;
 }

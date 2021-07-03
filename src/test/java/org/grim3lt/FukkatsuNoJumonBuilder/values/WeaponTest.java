@@ -9,25 +9,25 @@ import static org.junit.jupiter.api.Assertions.*;
 class WeaponTest {
     @Test
     void displayName() {
-        assertThat(Weapon.NOTHING.displayName()).isEqualTo("なし");
-        assertThat(Weapon.BAMBOO_LANCE.displayName()).isEqualTo("たけざお");
-        assertThat(Weapon.CLUB.displayName()).isEqualTo("こんぼう");
-        assertThat(Weapon.COPPER_SWORD.displayName()).isEqualTo("どうのつるぎ");
-        assertThat(Weapon.IRON_AXE.displayName()).isEqualTo("てつのおの");
-        assertThat(Weapon.IRON_SWORD.displayName()).isEqualTo("はがねのつるぎ");
-        assertThat(Weapon.FIRE_SWORD.displayName()).isEqualTo("ほのおのつるぎ");
-        assertThat(Weapon.SWORD_OF_ROTO.displayName()).isEqualTo("ロトのつるぎ");
+        assertThat(Weapon.NOTHING.getName()).isEqualTo("なし");
+        assertThat(Weapon.BAMBOO_LANCE.getName()).isEqualTo("たけざお");
+        assertThat(Weapon.CLUB.getName()).isEqualTo("こんぼう");
+        assertThat(Weapon.COPPER_SWORD.getName()).isEqualTo("どうのつるぎ");
+        assertThat(Weapon.IRON_AXE.getName()).isEqualTo("てつのおの");
+        assertThat(Weapon.IRON_SWORD.getName()).isEqualTo("はがねのつるぎ");
+        assertThat(Weapon.FIRE_SWORD.getName()).isEqualTo("ほのおのつるぎ");
+        assertThat(Weapon.SWORD_OF_ROTO.getName()).isEqualTo("ロトのつるぎ");
     }
 
     @Test
     void code() {
-        assertThat(Weapon.NOTHING.code()).isEqualTo(0);
-        assertThat(Weapon.BAMBOO_LANCE.code()).isEqualTo(1);
-        assertThat(Weapon.CLUB.code()).isEqualTo(2);
-        assertThat(Weapon.COPPER_SWORD.code()).isEqualTo(3);
-        assertThat(Weapon.IRON_AXE.code()).isEqualTo(4);
-        assertThat(Weapon.IRON_SWORD.code()).isEqualTo(5);
-        assertThat(Weapon.FIRE_SWORD.code()).isEqualTo(6);
-        assertThat(Weapon.SWORD_OF_ROTO.code()).isEqualTo(7);
+        assertThat(Weapon.NOTHING.getCode()).isEqualTo(0);
+        assertThat(Weapon.BAMBOO_LANCE.getCode()).isEqualTo(1);
+        assertThat(Weapon.CLUB.getCode()).isEqualTo(2);
+        assertThat(Weapon.COPPER_SWORD.getCode()).isEqualTo(3);
+        assertThat(Weapon.IRON_AXE.getCode()).isEqualTo(4);
+        assertThat(Weapon.IRON_SWORD.getCode()).isEqualTo(5);
+        assertThat(Weapon.FIRE_SWORD.getCode()).isEqualTo(6);
+        assertThat(Weapon.SWORD_OF_ROTO.getCode()).isEqualTo(7);
     }
 }

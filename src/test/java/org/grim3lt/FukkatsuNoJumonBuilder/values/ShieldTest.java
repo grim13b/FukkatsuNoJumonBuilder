@@ -9,15 +9,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class ShieldTest {
     @Test
     void displayName() {
-        assertThat(Shield.NOTHING.displayName()).isEqualTo("なし");
-        assertThat(Shield.LEATHER_SHIELD.displayName()).isEqualTo("かわのたて");
-        assertThat(Shield.SILVER_SHIELD.displayName()).isEqualTo("みかがみのたて");
+        assertThat(Shield.NOTHING.getName()).isEqualTo("なし");
+        assertThat(Shield.LEATHER_SHIELD.getName()).isEqualTo("かわのたて");
+        assertThat(Shield.SILVER_SHIELD.getName()).isEqualTo("みかがみのたて");
     }
 
     @Test
     void code() {
-        assertThat(Shield.NOTHING.code()).isEqualTo(0);
-        assertThat(Shield.LEATHER_SHIELD.code()).isEqualTo(1);
-        assertThat(Shield.SILVER_SHIELD.code()).isEqualTo(3);
+        assertThat(Shield.NOTHING.getCode()).isEqualTo(0);
+        assertThat(Shield.LEATHER_SHIELD.getCode()).isEqualTo(1);
+        assertThat(Shield.SILVER_SHIELD.getCode()).isEqualTo(3);
     }
 }

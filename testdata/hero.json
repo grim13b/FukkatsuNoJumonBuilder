@@ -1,0 +1,36 @@
+{
+  "name": {
+    "value": "ななし"
+  },
+  "weapon": "NOTHING",
+  "armor": "NOTHING",
+  "shield": "NOTHING",
+  "experience": {
+    "value": 0
+  },
+  "gold": {
+    "value": 0
+  },
+  "herb": {
+    "value": 0
+  },
+  "items": [
+    "NOTHING",
+    "NOTHING",
+    "NOTHING",
+    "NOTHING",
+    "NOTHING",
+    "NOTHING",
+    "NOTHING",
+    "NOTHING"
+  ],
+  "magicKey": {
+    "value": 0
+  },
+  "beat_dragon": false,
+  "beat_golem": false,
+  "equipped_cursed_belt": false,
+  "equipped_death_necklace": false,
+  "equipped_dragon_scale": false,
+  "equipped_solder_ring": false
+}

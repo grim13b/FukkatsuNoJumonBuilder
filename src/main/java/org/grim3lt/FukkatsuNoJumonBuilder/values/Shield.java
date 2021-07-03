@@ -6,19 +6,23 @@ import lombok.experimental.Accessors;
 
 @AllArgsConstructor
 @Getter
-@Accessors(fluent = true)
-public enum Shield implements IntegerCodeEnum {
+public enum Shield implements IntegerCodeEnum<Shield> {
     NOTHING (0, "なし"),
     LEATHER_SHIELD (1, "かわのたて"),
     IRON_SHIELD (2, "てつのたて"),
     SILVER_SHIELD (3, "みかがみのたて");
 
     private final Integer code;
-    private final String displayName;
+    private final String name;
 
     @Override
-    public String toString() {
-        return displayName;
+    public Integer getCode() {
+        return code;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }
 

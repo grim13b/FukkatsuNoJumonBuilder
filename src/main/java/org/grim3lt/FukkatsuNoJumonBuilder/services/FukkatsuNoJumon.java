@@ -105,7 +105,7 @@ public class FukkatsuNoJumon {
 
     // 名前の分解
     private void encodeName() {
-        String nameString = name.value();
+        String nameString = name.getValue();
 
         // 一文字ずつ切り出す
         // HashMapから文字コードを引き出す
@@ -124,39 +124,39 @@ public class FukkatsuNoJumon {
     // 経験値の展開
     private void encodeExperience() {
         // 経験値の上位バイトを格納
-        data[2] = (experience.value() >> 8) & 0xff;
+        data[2] = (experience.getValue() >> 8) & 0xff;
 
         // 経験値の下位バイトを格納
-        data[13]= experience.value() & 0xff;
+        data[13]= experience.getValue() & 0xff;
     }
 
     // 所持金の展開
     private void encodeGold() {
         // Goldの上位バイトを格納
-        data[5] = (gold.value() >> 8) & 0xff;
+        data[5] = (gold.getValue() >> 8) & 0xff;
 
         // Goldの下位バイトを格納
-        data[10] = gold.value() & 0xff;
+        data[10] = gold.getValue() & 0xff;
     }
 
     // 装備の展開
     private void encodeEquipment() {
         // 武器上位3ビット　鎧2-5ビット　盾下位2ビット
-        data[6] = weapon.code() << 5 | armor.code() << 2 | shield.code();
+        data[6] = weapon.getCode() << 5 | armor.getCode() << 2 | shield.getCode();
     }
 
     // 薬草と魔法の鍵の展開
     private void encodeKeyAndHerb() {
-        data[4] = (magicKey.value() << 4) | herb.value();
+        data[4] = (magicKey.getValue() << 4) | herb.getValue();
     }
 
     // どうぐの展開
     private void encodeItems() {
         // インベントリ1-2が0バイト目、3-4が11バイト目、 5-6が3バイト目、 7-8が8バイト目
-        data[0] = (items[1].code() << 4) | items[0].code();
-        data[11]= (items[3].code() << 4) | items[2].code();
-        data[3] = (items[5].code() << 4) | items[4].code();
-        data[8] = (items[7].code() << 4) | items[6].code();
+        data[0] = (items[1].getCode() << 4) | items[0].getCode();
+        data[11]= (items[3].getCode() << 4) | items[2].getCode();
+        data[3] = (items[5].getCode() << 4) | items[4].getCode();
+        data[8] = (items[7].getCode() << 4) | items[6].getCode();
     }
 
     // どうぐ系装備品の展開
