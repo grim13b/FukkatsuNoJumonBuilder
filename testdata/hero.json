@@ -1,0 +1,36 @@
+{
+  "name": {
+    "value": "いねほあ"
+  },
+  "weapon": "COPPER_SWORD",
+  "armor": "FULL_PLATE",
+  "shield": "IRON_SHIELD",
+  "experience": {
+    "value": 52310
+  },
+  "gold": {
+    "value": 99999
+  },
+  "herb": {
+    "value": 9
+  },
+  "magicKey": {
+    "value": 2
+  },
+  "items": [
+    "NOTHING",
+    "NOTHING",
+    "NOTHING",
+    "NOTHING",
+    "NOTHING",
+    "NOTHING",
+    "NOTHING",
+    "NOTHING"
+  ],
+  "beat_dragon": false,
+  "beat_golem": false,
+  "equipped_cursed_belt": false,
+  "equipped_death_necklace": false,
+  "equipped_dragon_scale": false,
+  "equipped_solder_ring": false
+}
